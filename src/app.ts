@@ -1,20 +1,16 @@
 import express from "express";
 import "dotenv/config";
+import webRoutes from "./routes/web";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-//config view engine
+// config view engine
 app.set("view engine", "ejs");
 app.set("views", "src/views");
 
-app.get("/", (req, res) => {
-    res.render("home");
-});
-
-app.get("/trungql", (req, res) => {
-    res.send("Hello Trunql");
-});
+// config routes
+webRoutes(app);
 
 // show in terminal
 app.listen(PORT, () => {
