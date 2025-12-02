@@ -14,5 +14,8 @@
     "author": {
         "name": "trungql"
     },
-    "license": "ISC"
+    "license": "ISC",
+    "dependencies": {
+        "express": "5.0.1"
+    }
 }
