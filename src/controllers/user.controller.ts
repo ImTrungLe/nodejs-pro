@@ -1,7 +1,10 @@
 import { Request, Response } from "express";
+import { getAllUsers } from "../services/user.service";
 
-const getHomePage = (req: Request, res: Response) => {
-    return res.render("home");
+const getHomePage = async (req: Request, res: Response) => {
+    const users = await getAllUsers();
+    console.log("🚀 ~ getHomePage ~ users:", users);
+    return res.render("home", { users });
 };
 
 const getCreateUserPage = (req: Request, res: Response) => {
@@ -9,11 +12,7 @@ const getCreateUserPage = (req: Request, res: Response) => {
 };
 
 const postCreateUserPage = (req: Request, res: Response) => {
-    console.log("🚀 ~ postCreateUserPage ~ req:", req.body);
     const { fullName, email, address } = req.body;
-    console.log("Full Name:", fullName);
-    console.log("Email:", email);
-    console.log("Address:", address);
     return res.redirect("/");
 };
 
